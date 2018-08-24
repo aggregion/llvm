@@ -1,4 +1,4 @@
-//===- EosioApply ---------------===//
+//===- AgrioApply ---------------===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -22,13 +22,13 @@
 #include "llvm/Support/raw_ostream.h"
 using namespace llvm;
 
-#define DEBUG_TYPE "eosio_apply"
+#define DEBUG_TYPE "agrio_apply"
 
 namespace {
-  // EosioApply - Mutate the apply function as needed 
-  struct EosioApplyPass : public FunctionPass {
+  // AgrioApply - Mutate the apply function as needed 
+  struct AgrioApplyPass : public FunctionPass {
     static char ID; 
-    EosioApplyPass() : FunctionPass(ID) {}
+    AgrioApplyPass() : FunctionPass(ID) {}
 
     bool runOnFunction(Function &F) override {
       if (F.getName().equals("apply")) {
@@ -60,8 +60,8 @@ namespace {
   };
 }
 
-char EosioApplyPass::ID = 0;
-static RegisterPass<EosioApplyPass> X("apply_fixup", "Eosio Apply Fixups");
+char AgrioApplyPass::ID = 0;
+static RegisterPass<AgrioApplyPass> X("apply_fixup", "Agrio Apply Fixups");
 
-static void registerEosioApplyPass(const PassManagerBuilder&, legacy::PassManagerBase& PM) { PM.add(new EosioApplyPass()); }
-static RegisterStandardPasses RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible, registerEosioApplyPass);
+static void registerAgrioApplyPass(const PassManagerBuilder&, legacy::PassManagerBase& PM) { PM.add(new AgrioApplyPass()); }
+static RegisterStandardPasses RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible, registerAgrioApplyPass);
