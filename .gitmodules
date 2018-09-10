@@ -1,6 +1,8 @@
 [submodule "tools/clang"]
 	path = tools/clang
 	url = https://github.com/aggregion/clang.git
+	branch = agrio
 [submodule "tools/lld"]
 	path = tools/lld
 	url = https://github.com/aggregion/lld.git
+	branch = agrio
